@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 20px;
+  padding: 0;
+}
+
+.navbar { display: flex; justify-content: space-between; padding: 1rem; }
+.brand-logo {
+  background: url('/src/res/logo-x-300x62.png') center/cover;
+  padding-right: 26rem;
+}
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
+.product-card { border: 1px solid #ddd; padding: 1rem; text-align: center; }
+
+/* Hero Section */
+.hero {
+  /* background: url('/src/resources/dairy-farm.png') center/cover; */
+  padding: 4rem 1rem;
+  color: white;
+  text-align: center;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.form-group {
+  margin: 1rem 0;
+}
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+/* Footer */
+.site-footer {
+  background: #333;
+  color: white;
+  padding: 2rem;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.footer-section {
+  margin: 1rem;
+  min-width: 200px;
+}
+
+
+
+
+
+
+
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+code {
+  font-size: 1.2em;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  margin: 20px;
+  padding: 0;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+  font-family: monospace;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
