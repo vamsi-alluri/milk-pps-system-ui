@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from 'src/utils/AuthContext';
 
-const Login = () => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({
-    rememberMe: false,
-    credentials: {
-      email: '',
-      username: '',
-      password: ''
-    }
+    credentials: { username: '', password: '' },
+    rememberMe: false
   });
-  const [isLoading, setIsLoading] = useState(false);
+
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+
+      // setTimeout(() => navigate('/dashboard'), 1500);
+    }
+  }, [isLoggedIn, navigate]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      credentials: {
+        ...prev.credentials,
+        [name]: value
+      }
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,14 +38,13 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://localhost:7230/api/Login', formData, {
+      await axios.post('https://localhost:7230/api/Login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
         withCredentials: true
       });
-
-      console.log('Login successful:', response.data);
+      login();
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
@@ -37,24 +53,16 @@ const Login = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    if (['email', 'username', 'password'].includes(name)) {
-      setFormData(prev => ({
-        ...prev,
-        credentials: {
-          ...prev.credentials,
-          [name]: value
-        }
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
-  };
+  if (isLoggedIn) {
+    return (
+      <div className="container mt-5 text-center">
+        <h4>You are already logged in.</h4>
+        <p>
+          Go to your <a href="/dashboard">Dashboard</a>.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-5" style={{ maxWidth: '400px' }}>
@@ -113,4 +121,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

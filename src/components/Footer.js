@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="bg-dark text-light pt-4">
+  <footer className="site-footer bg-dark text-light pt-4">
     <div className="container">
       <div className="row">
         <div className="col-md-4 mb-3">
           <h5>About Us</h5>
-          <p>Fresh dairy since 2025</p>
+          <p>Fresh dairy since 2014</p>
         </div>
         <div className="col-md-4 mb-3">
           <h5>Quick Links</h5>

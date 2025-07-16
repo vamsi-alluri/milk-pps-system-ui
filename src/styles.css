@@ -1,20 +1,28 @@
+
+/* Globals */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Times New Roman', Times, serif;
   margin: 20px;
   padding: 0;
 }
 
+/* Nav Bar and Brand logo */
 .navbar { display: flex; justify-content: space-between; padding: 1rem; }
 .brand-logo {
-  background: url('/src/res/logo-x-300x62.png') center/cover;
-  padding-right: 26rem;
+  /* background: url('/src/res/logo-x-300x62.png') center/cover; */
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: xx-large;
 }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
-.product-card { border: 1px solid #ddd; padding: 1rem; text-align: center; }
+
+/* Products */
+.products-grid { padding: 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
+.product-card { border: 3px solid #ddd; text-align: center; border-radius: 3rem; }
+.product-card-img {width: 10rem; background-color:#fff;}
+.product-card-info {  border-top: 1px solid; border-color: #333; border-width: 100%; }
+
 
 /* Hero Section */
 .hero {

@@ -1,14 +1,12 @@
 // src/pages/Dashboard.js
-import AuthGuard from '../components/Guards/AuthGuard';
-import DashboardNavbar from '../components/DashboardNavbar';
+import AuthGuard from '../components/Guard/AuthGuard';
+import { DEPARTMENTS, ROLE_LEVELS } from 'src/utils/constants';
 
 const Dashboard = () => {
   
   return (
-    <AuthGuard requiredRole="admin">
+    <AuthGuard requiredDepartment={DEPARTMENTS.any} minRoleLevel={ROLE_LEVELS.employee}>
     <div>
-      <h2>Dashboard</h2>
-      <DashboardNavbar></DashboardNavbar>
       <div>The auth has passed.</div>
     </div>
     </AuthGuard>
