@@ -38,56 +38,56 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {!isLoggedIn && (
+            {!isLoggedIn() && (
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
             )}
-            {!isLoggedIn && (
+            {!isLoggedIn() && (
               <LinkContainer to="/products">
                 <Nav.Link>Products</Nav.Link>
               </LinkContainer>
             )}
-            {!isLoggedIn && (
+            {!isLoggedIn() && (
               <LinkContainer to="/contact">
                 <Nav.Link>Contact</Nav.Link>
               </LinkContainer>
             )}
-            {!isLoggedIn && (
+            {!isLoggedIn() && (
               <LinkContainer to="/login">
                 <Nav.Link>Login</Nav.Link>
               </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
                 <LinkContainer to="/dashboard">
                   <Nav.Link>Dashboard</Nav.Link>
                 </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
                 <LinkContainer to="/procurement">
                   <Nav.Link>Procurement</Nav.Link>
                 </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
                 <LinkContainer to="/Processing">
                   <Nav.Link>Processing</Nav.Link>
                 </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
                 <LinkContainer to="/Sales">
                   <Nav.Link>Sales</Nav.Link>
                 </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
                 <LinkContainer to="/Administration">
                   <Nav.Link>Administration</Nav.Link>
                 </LinkContainer>
             )}
-            {isLoggedIn && (
+            {isLoggedIn() && (
 
                 <NavDropdown title={username} id="profile-dropdown" className="ms-auto">
-                  <LinkContainer to="/profile-settings">
-                    <NavDropdown.Item>Settings</NavDropdown.Item>
+                  <LinkContainer to="/Profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>

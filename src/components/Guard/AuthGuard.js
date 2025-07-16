@@ -10,19 +10,18 @@ const AuthGuard = ({ requiredDepartment, minRoleLevel = 0, children }) => {
   const [checked, setChecked] = useState(false);
   const [accessGranted, setAccessGranted] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedIn, userInfo } = useAuth();
+  const { userInfo, isLoggedIn} = useAuth();
 
   useEffect(() => {
     let isMounted = true;
 
     const processUserInfo = () => {
-      const match = userInfo.accessScope.find(scope =>
-        (scope.departmentName?.toUpperCase() === requiredDepartment?.toUpperCase() || scope.departmentName?.toUpperCase() === DEPARTMENTS.admin.toUpperCase()) &&
-        scope.roleLevel >= minRoleLevel &&
-        scope.roleLevel > 0 &&
-        scope.roleLevel < 6
+      const match = userInfo.accessScopes.find(scope =>
+        (scope.DepartmentName?.toUpperCase() === requiredDepartment?.toUpperCase() || scope.DepartmentName?.toUpperCase() === DEPARTMENTS.admin.toUpperCase()) &&
+        scope.RoleLevel >= minRoleLevel &&
+        scope.RoleLevel > 0 &&
+        scope.RoleLevel < 6
       );
-      console.log(match);
 
       if (isMounted) {
         setUser(userInfo);
@@ -30,11 +29,11 @@ const AuthGuard = ({ requiredDepartment, minRoleLevel = 0, children }) => {
       }
     };
 
-    if (isLoggedIn) {
+    if (isLoggedIn()) {
       processUserInfo();
       setChecked(true);
     } else {
-      navigate("/login");
+      // navigate("/login");
       setChecked(true);
     }
 

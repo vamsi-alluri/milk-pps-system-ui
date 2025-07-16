@@ -11,7 +11,13 @@ export const AuthProvider = ({ children }) => {
     return cookie ? JSON.parse(cookie) : null;
   });
 
-  const isLoggedIn = !!userInfo;
+  const isLoggedIn = () => {
+    if (!!!userInfo){
+      login();
+    }
+
+    return !!userInfo;
+  };
 
   const login = () => {
     const userData = Cookies.get('userInfo');
@@ -20,6 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove('userInfo');
+
     setUserInfo(null);
   };
 

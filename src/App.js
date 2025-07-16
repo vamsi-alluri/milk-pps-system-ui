@@ -17,12 +17,12 @@ import Dashboard from './pages/Dashboard';
 import Procurement from './pages/Procurement';
 import AddUser from './pages/AddUser';
 import Administration from './pages/Administration';
+import ProfileSettings from './pages/ProfileSettings';
 
 // Helper Pages for dev:
 import DevAuthBypass from './pages/DevAuthBypass';
 
 // Components:
-import AuthGuard from './components/Guard/AuthGuard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -40,7 +40,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/AuthGuard" element={<AuthGuard />} />
           <Route path="/Unauthorized" element={<Unauthorized />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
@@ -50,6 +49,7 @@ function App() {
           <Route path="/AddUser" element={<AddUser />} />
           <Route path="/Administration" element={<Administration />} />
           <Route path="/dev-auth" element={<DevAuthBypass />} />
+          <Route path="/Profile" element={<ProfileSettings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

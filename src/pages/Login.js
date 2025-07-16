@@ -12,14 +12,36 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { login, isLoggedIn } = useAuth();
+  const { login, isLoggedIn, logout } = useAuth();
+
+
+  
 
   useEffect(() => {
-    if (isLoggedIn) {
+
+    const tryExistingSession = async () => {
+      try {
+        await axios.post('https://localhost:7230/api/login', "", {
+          withCredentials: true
+        });
+        
+        login();
+        if (isLoggedIn()){
+          setTimeout(() => navigate('/dashboard'), 1500);
+        }
+      } catch {
+        // Token is likely invalid or expired; allow login form
+        // logout();
+      }
+    };
+
+    tryExistingSession();
+
+    if (isLoggedIn()) {
 
       // setTimeout(() => navigate('/dashboard'), 1500);
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate, login, logout]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +75,7 @@ const LoginPage = () => {
     }
   };
 
-  if (isLoggedIn) {
+  if (isLoggedIn()) {
     return (
       <div className="container mt-5 text-center">
         <h4>You are already logged in.</h4>
